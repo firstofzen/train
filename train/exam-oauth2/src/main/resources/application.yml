@@ -1,0 +1,10 @@
+server:
+  port: 4444
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${GG_ID_OIDC}
+            clientSecret: ${GG_SECRET_OIDC}
