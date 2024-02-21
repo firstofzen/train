@@ -1,6 +1,8 @@
 package per.train.examoauth2.entities;
 
 
-public record User(String id, String name, String email) {
+import java.util.UUID;
+
+public record User(UUID id, String accessToken, String refreshToken,String email, Oidc oidc) {
 
 }

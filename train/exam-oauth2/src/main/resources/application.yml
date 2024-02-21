@@ -6,5 +6,8 @@ spring:
       client:
         registration:
           google:
-            clientId: ${GG_ID_OIDC}
-            clientSecret: ${GG_SECRET_OIDC}
+            clientId: 635213639114-dfkc0ol2f22gddo2aslrctdcsiv7j4b1.apps.googleusercontent.com
+            clientSecret: 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
+datastax-java-driver:
+  basic:
+    contact-points: 127.0.0.1:9042
