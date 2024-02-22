@@ -1,5 +1,6 @@
 package per.train.examoauth2;
 
+import com.datastax.oss.driver.api.core.CqlSession;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,6 @@ import java.util.Objects;
 @SpringBootTest
 class ExamOauth2ApplicationTests {
 	@Autowired UserRepository repository;
-
 	@Test
 	void contextLoads() {
 	}

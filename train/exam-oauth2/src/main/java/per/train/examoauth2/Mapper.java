@@ -1,8 +1,9 @@
 package per.train.examoauth2;
 
 import com.datastax.oss.driver.api.core.data.UdtValue;
+import org.springframework.stereotype.Component;
 import per.train.examoauth2.entities.Oidc;
-
+@Component
 record Mapper() {
     public Oidc convert(UdtValue value) {
         return new Oidc(
@@ -11,7 +12,7 @@ record Mapper() {
                 value.getString("picUrl"),
                 value.getString("locale"),
                 value.getString("gender"),
-                value.getLocalDate("birthday")
+                value.getString("birthday")
         );
     }
 }
