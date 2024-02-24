@@ -76,7 +76,7 @@ class SecurityConfig {
         return security
                 .cors(ServerHttpSecurity.CorsSpec::disable)
                 .authorizeExchange(exc -> {
-                    exc.pathMatchers("/loginAT/**").permitAll();
+                    exc.pathMatchers("/loginAT").permitAll();
                     exc.anyExchange().authenticated();
                 })
                 .oauth2Login(Customizer.withDefaults())
@@ -108,7 +108,7 @@ class Api {
     public RouterFunction<ServerResponse> loginByAT() {
         return route().GET("/loginAT", apiHandler::loginAT).build();
     }
-}
+ }
 
 @Component
 class ApiHandler {
@@ -258,7 +258,7 @@ class MyWebFilter implements org.springframework.web.server.WebFilter {
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         if(exchange.getRequest().getQueryParams().containsKey("accesstoken")) {
             var newReq = exchange.getRequest().mutate().path("/loginAT").build();
-            chain.filter(exchange.mutate().request(newReq).build());
+            return chain.filter(exchange.mutate().request(newReq).build());
         }
         return chain.filter(exchange);
     }
