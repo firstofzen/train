@@ -1,0 +1,25 @@
+section {
+    height: 100svh;
+    width: 100svw;
+    border-bottom: 1px solid var(--border-color);
+}
+.sec1 {
+    margin-top: 10svh;
+}
+section h1 {
+    font-size: calc(var(--font-size) + 5svw);
+    text-align: center;
+}
+@media only screen and(max-width: 600px) {
+    section {
+        height: 150svh;
+    }
+}
+
+@media only screen and(min-width: 600px) and (max-width: 768px) {
+    
+}
+
+@media only screen and(min-width: 768px) and (max-width: 1200px){
+    
+}
