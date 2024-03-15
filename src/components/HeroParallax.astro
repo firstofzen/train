@@ -1,0 +1,55 @@
+---
+
+import { cn } from "../utils/cn";
+
+---
+
+<div class={cn("absolute z-[1] h-full w-full flex items-end justify-center", "heroparallax")}>
+    <div class={cn("lottie astronout", "h-96 w-96")} data-animation-path="src/assets/astronout-2.json" data-animation-loop="true" data-name="astronout"></div>
+</div>
+<script>
+    import lottie from "lottie-web";
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+    const astronout = document.querySelector(".sec1 .heroparallax .astronout")
+    const sec1 = document.querySelector(".sec1")
+    gsap.registerPlugin(ScrollTrigger)
+    lottie.loadAnimation({})
+
+    //is astronout in viewport
+    
+    let astronoutObserver = new IntersectionObserver((entries, observe) => {
+        entries.forEach(e => {
+            if(e.isIntersecting) {
+                gsap.fromTo(astronout, {
+                    xPercent: -100
+                }, {
+                    xPercent: 0, duration: 2.5, ease: "power3.out"
+                })
+            } else {
+            }
+        })
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0,
+        trackVisibility: false,
+        delay: 100,
+    })
+    astronoutObserver.observe(astronout)
+
+    //astronout scroll
+    let scrollAstronout = gsap.timeline({
+        scrollTrigger: {
+            trigger: sec1,
+            start: "top top",
+            end: "bottom",
+            scrub: true,
+        } 
+    })
+    scrollAstronout.to(astronout, {
+        yPercent: 30, duration: 2.5, ease: "power2.out"
+    })
+</script>
+

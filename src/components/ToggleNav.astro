@@ -1,0 +1,97 @@
+---
+import { cn } from "../utils/cn";
+const styleNavbarMb = {
+  a: cn(""),
+  p: cn("mt-8 text-black dark:text-slate-300 text-2xl text-center "),
+};
+---
+
+<label class={cn("hamburger md:hidden")}>
+  <input type="checkbox" id="toggleNav" />
+  <svg class={cn("h-9")} viewBox="0 0 32 32">
+    <path
+      class={cn("line line-top-bottom stroke-slate-900 dark:stroke-slate-100")}
+      d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+    ></path>
+    <path
+      class={cn("line stroke-slate-900 dark:stroke-slate-100")}
+      d="M7 16 27 16"></path>
+  </svg>
+</label>
+<nav
+  class={cn(
+    "navbarMb duration-500 ease-out flex-col translate-x-[350px] fixed right-0 z-10 h-[65svh] w-[55svw] max-w-[272px] backdrop-blur-sm md:hidden border-b-slate-600 border-b-[0.65px] border-l-slate-600 border-l-[0.66px] shadow-lg divide-y divide-slate-700"
+  )}
+  style={{ top: "clamp(35px, 7.7svh, 7.8svh)" }}
+>
+  <a href="/">
+    <p class={styleNavbarMb.p}>Home</p>
+  </a>
+  <a href="/blogs">
+    <p class={styleNavbarMb.p}>Blogs</p>
+  </a>
+  <a href="/chat">
+    <p class={styleNavbarMb.p}>Chat</p>
+  </a>
+</nav>
+<style>
+  .hamburger {
+    cursor: pointer;
+  }
+
+  .hamburger input {
+    display: none;
+  }
+
+  .hamburger svg {
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition:
+      stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+</style>
+<script>
+  const toggleNav = document.querySelector("#toggleNav");
+  const navbarMb = document.querySelector("header nav.navbarMb");
+  const hamburger = document.querySelector("header label.hamburger");
+  toggleNav.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      navbarMb.style.transform = "translateX(0)";
+    } else {
+      navbarMb.style.transform = "translateX(350px)";
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (navbarMb.style.transform == "translateX(0px)") {
+      var isClicked =
+        e.target === navbarMb || navbarMb.contains(e.target) && e.target === hamburger ||
+        hamburger.contains(e.target);
+      
+        if (!isClicked) {
+        toggleNav.checked = false;
+        navbarMb.style.transform = "translate(350px)";
+      }
+    }
+  });
+</script>

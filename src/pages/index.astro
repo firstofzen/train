@@ -1,0 +1,53 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { TracingBeam } from "../components/uikits/TracingBeam";
+import HeroParallax from "../components/HeroParallax.astro";
+import TechIUse from "../components/TechIUse.astro";
+import { cn } from "../utils/cn";
+
+---
+
+<MainLayout title="tailwind">
+  <TracingBeam className="px-6" client:load>
+    <main class="block snap-y">
+      <section
+        class={cn(
+          "mt-[10svh] grid  grid-cols-1 grid-rows-5 md:grid-cols-2 ",
+          "sec1"
+        )}
+      >
+        <HeroParallax />
+        <div
+          class={cn("col-span-1 row-span-2 md:row-span-4 z-[2] flex flex-col bg-yellow-400")}
+        >
+          <h1
+            class={cn(
+              "text-4xl bg-clip-text bg-gradient-to-br inline-block text-transparent from-slate-300 to-slate-900 dark:from-slate-50 dark:to-slate-700  opacity-[0.92] md:text-5xl font-bold text-nowrap antialiased text-center"
+            )}
+          >
+            <p>Hi</p>
+            <p>I'm Duc Anh</p>
+          </h1>
+          <h3 class="flex items-center">
+            <span class="h-[1px] bg-slate-500 dark:bg-slate-400 flex-grow"
+            ></span>
+            <p
+              class="text-sm text-slate-500 dark:text-slate-400 font-semibold text-nowrap float-end"
+            >
+              Fullstack Web Developer
+            </p>
+          </h3>
+        </div>
+        <div class={cn("col-span-1 row-span-2 md:row-span-4 z-[2] bg-violet-400")}>
+        
+        </div>
+        <div class={cn("col-span-1 md:col-span-2 row-span-1 z-[2] bg-blue-400")}></div>
+      </section>
+    </main>
+  </TracingBeam>
+</MainLayout>
+<style>
+  section {
+    @apply relative h-[100svh] w-[89.23svw] mx-auto lg:w-[76svw] min-h-[450px];
+  }
+</style>
